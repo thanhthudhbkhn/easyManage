@@ -34,15 +34,15 @@ and open the template in the editor.
             die("Connection failed: " . mysql_connect_error());
         }
         mysql_select_db("project1",$conn);
-        $sql="select id,name from employee";
+        $sql="select id,name,email from employee";
         $query=mysql_query($sql);
         if(!$query){
             die("Invalid query: ".mysql_error());
         } else{
             if (mysql_num_rows($query)>0){
-                echo "<table><tr><th>ID</th><th>Name</th></tr>";
+                echo "<table><tr><th>ID</th><th>Name</th><th>Email</th></tr>";
                 while($row = mysql_fetch_assoc($query)) {
-                    echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td>";
+                    echo "<tr><td>".$row["id"]."</td><td>".$row["name"]."</td><td>".$row["email"]."</td>";
                     echo "<td><a href=\"update.php?id=".$row['id']."\">Update Information</a></td>";
                     echo "<td><a href=\"delete.php?id=".$row['id']."\">Delete</a></td>";
                 }
